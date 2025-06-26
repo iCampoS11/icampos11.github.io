@@ -91,4 +91,4 @@ Após logar como admin:
 
 ---
 
-Feito por **Matheus Eduardo Campos Ferreira** para a disciplina *Fundamentos de Sistemas Web*.
+Feito por **Matheus Eduardo Campos Ferreira** para a disciplina *Fundamentos de Sistemas Web - PUCRS*.

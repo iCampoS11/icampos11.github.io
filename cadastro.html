@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperRP - Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <!-- Header Modificado -->
+    <header class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
+        <div class="container">
+            <!-- Logo no lugar do texto -->
+            <a class="navbar-brand" href="index.html">
+                <img src="imagens/LogoRP.png" alt="SuperRP" height="40">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <nav class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Home apenas com ícone -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" title="Página Inicial">
+                            <i class="bi bi-house fs-5"></i>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="produtos.html">
+                            <i class="bi bi-cart"></i> Produtos
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="servicos.html">
+                            <i class="bi bi-truck"></i> Serviços
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.html">
+                            <i class="bi bi-telephone"></i> Contato
+                        </a>
+                    </li>
+                    
+                   <li id="nav-user" class="nav-item">
+                        <!-- cadastro/entrar -->
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="carrinho.html">
+                            <i class="bi bi-cart3"></i> 
+                            <span id="contador-carrinho" class="badge bg-danger">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mt-5 pt-4">
+        <h2 class="text-center mb-4">Cadastro de Cliente</h2>
+        
+        <form id="form-cadastro" class="row g-3 needs-validation" novalidate>
+            <!-- Dados Pessoais -->
+            <div class="col-md-6">
+                <label for="nome" class="form-label">Nome Completo*</label>
+                <input type="text" class="form-control" id="nome" placeholder="Digite seu nome completo" required>
+            </div>
+            
+            <div class="col-md-6">
+                <label for="cpf" class="form-label">CPF*</label>
+                 <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" required>                
+            </div>
+            
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email*</label>
+                <input type="email" class="form-control" id="email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="senha" class="form-label">Senha*</label>
+                <input type="password" class="form-control" id="senha" placeholder="Crie uma senha" required>
+            </div>
+
+            <div class="col-md-6">
+                 <label for="confirmar-senha" class="form-label">Confirmar Senha*</label>
+                 <input type="password" class="form-control" id="confirmar-senha" placeholder="Repita a senha" required>
+            </div>
+            
+            <div class="col-md-6">
+                <label for="telefone" class="form-label">Celular*</label>
+                <input type="tel" class="form-control" id="telefone" placeholder="(16) 99999-9999" required>
+            </div>
+            
+            <div class="col-md-6">
+                <label class="form-label">Sexo</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sexo" id="masculino" value="masculino">
+                        <label class="form-check-label" for="masculino">Masculino</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sexo" id="feminino" value="feminino">
+                        <label class="form-check-label" for="feminino">Feminino</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sexo" id="outro" value="outro">
+                        <label class="form-check-label" for="outro">Outro</label>
+                    </div>
+                </div>
+            </div>
+            
+                <div class="col-md-6">
+                    <label for="nascimento" class="form-label">Data de Nascimento</label>
+                    <input type="text" class="form-control" id="nascimento" placeholder="dd/mm/aaaa">
+                </div>
+            
+            <!-- Endereço -->
+            <div class="col-12">
+                <h4 class="mt-4 mb-3 border-bottom">Endereço de Entrega</h4>
+            </div>
+            
+            <div class="col-md-6">
+                <label for="cep" class="form-label">CEP*</label>
+                <input type="text" class="form-control" id="cep" placeholder="00000-000" required>
+            <div class="invalid-feedback">Por favor, informe um CEP válido de Ribeirão Preto.</div>
+        </div>
+            
+            <div class="col-md-6">
+                <label for="logradouro" class="form-label">Rua/Avenida*</label>
+                <input type="text" class="form-control" id="logradouro" required>
+            </div>
+            
+            <div class="col-md-6">
+                <label for="numero" class="form-label">Número*</label>
+                <input type="text" class="form-control" id="numero" required>
+            </div>
+
+            
+            <div class="col-md-6">
+                <label for="complemento" class="form-label">Complemento</label>
+                <input type="text" class="form-control" id="complemento">
+            </div>
+            
+            <div class="col-md-6">
+                <label for="bairro" class="form-label">Bairro*</label>
+                <input type="text" class="form-control" id="bairro" required>
+            </div>
+            
+
+            
+            <!-- Termos -->
+            <div class="col-12 mt-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="termos" required>
+                    <label class="form-check-label" for="termos">
+                        Concordo com os termos e condições de uso
+                    </label>
+                </div>
+            </div>
+            
+            <div class="col-12 mt-4">
+                <button type="submit" class="btn btn-success btn-lg">Finalizar Cadastro</button>
+            </div>
+        </form>
+    </main>
+
+    <footer class="text-white py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center mb-3 mb-md-0">
+                    <img src="imagens/LogoSUPERRP.png" alt="SuperMercado RP" height="60">
+                </div>
+                <div class="col-md-8 text-center text-md-end">
+                    <p class="mb-1">© 2025 SuperRP - Todos os direitos reservados</p>
+                    <p class="mb-1">Contato: (16) 3333-4444 | contato@SuperRP.com.br</p>
+                    <p class="mb-0">Disciplina: Fundamentos de Sistemas Web - Fase 2</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/formularios.js" defer></script>
+    <script src="js/auth.js" defer></script>
+</body>
+</html>

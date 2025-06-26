@@ -2,79 +2,290 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Produtos - SuperMercado Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperRP - Produtos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
-    <header>
-        <h1>SuperMercado Web</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Promoções</a></li>
-                <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="servicos.html">Serviços</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul>
-        </nav>
+    <!-- Header Modificado -->
+    <header class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
+        <div class="container">
+            <!-- Logo no lugar do texto -->
+            <a class="navbar-brand" href="index.html">
+                <img src="imagens/LogoRP.png" alt="SuperRP" height="40">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <nav class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Home apenas com ícone -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" title="Página Inicial">
+                            <i class="bi bi-house fs-5"></i>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="produtos.html">
+                            <i class="bi bi-cart"></i> Produtos
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="servicos.html">
+                            <i class="bi bi-truck"></i> Serviços
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.html">
+                            <i class="bi bi-telephone"></i> Contato
+                        </a>
+                    </li>
+                    
+                   <li id="nav-user" class="nav-item">
+                        <!-- cadastro/entrar -->
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="carrinho.html">
+                            <i class="bi bi-cart3"></i> 
+                            <span id="contador-carrinho" class="badge bg-danger">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <h2>Nossos Produtos</h2>
+    <main class="container mt-5 pt-4">
+        <h2 class="text-center mb-4">Nossos Produtos</h2>
         
-        <!-- Frutas e Verduras -->
-        <section id="frutas">
-            <h3>Frutas e Verduras</h3>
-            <div>
-                <h4>Maçã Verde</h4>
-                <img src="imagens/frutas/maca.png" alt="Maçãs verdes" width="200">
-                <p>Maçãs frescas da região sul</p>
-                <p>R$ 5,99/kg</p>
+        <div class="row">
+            <!-- Menu de Filtro Lateral -->
+            <div class="col-md-3 mb-4">
+                <div class="card filter-card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Filtrar por Categoria</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <button type="button" class="list-group-item list-group-item-action active" 
+                                    data-categoria="todos">
+                                Todas as Categorias
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" 
+                                    data-categoria="frutas">
+                                Frutas e Verduras
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" 
+                                    data-categoria="naopereciveis">
+                                Não Perecíveis
+                            </button>
+                                    <button type="button" class="list-group-item list-group-item-action" 
+                                    data-categoria="bebidas">
+                                Bebidas
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" 
+                                    data-categoria="higiene">
+                                Higiene e Limpeza
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h4>Alface Crespa</h4>
-                <img src="imagens/frutas/alface.png" alt="Alface crespa" width="200">
-                <p>Alface hidropônica</p>
-                <p>R$ 2,49/un</p>
-            </div>
-        </section>
+            
+            <!-- Produtos -->
+            <div class="col-md-9">
+                <div class="row" id="produtos-container">
+                    <!-- Frutas e Verduras -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4 produto" data-categoria="frutas">
+                        <div class="card h-100" data-aos="fade-up">
+                            <img src="imagens/frutas/maca.png" class="card-img-top" alt="Maçãs vermelhas frescas">
+                            <div class="card-body">
+                                <h4 class="card-title">Maçã Verde</h4>
+                                <p class="card-text">Maçãs frescas da região sul</p>
+                                <p class="fw-bold">R$ 5,99/kg</p>
+                                <button class="btn btn-success btn-adicionar" 
+                                        data-id="1" 
+                                        data-nome="Maçã Verde" 
+                                        data-preco="5.99">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4 produto" data-categoria="frutas">
+                        <div class="card h-100" data-aos="fade-up">
+                            <img src="imagens/frutas/alface.png" class="card-img-top" alt="Alface crespa fresca">
+                            <div class="card-body">
+                                <h4 class="card-title">Alface Crespa</h4>
+                                <p class="card-text">Alface hidropônica</p>
+                                <p class="fw-bold">R$ 2,49/un</p>
+                                <button class="btn btn-success btn-adicionar" 
+                                        data-id="2" 
+                                        data-nome="Alface Crespa" 
+                                        data-preco="2.49">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Não Perecíveis -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4 produto" data-categoria="naopereciveis">
+                        <div class="card h-100" data-aos="fade-up">
+                            <img src="imagens/alimentos/arroz.png" class="card-img-top" alt="Pacote de arroz integral">
+                            <div class="card-body">
+                                <h4 class="card-title">Arroz Integral</h4>
+                                <p class="card-text">Arroz tipo 1 - 5kg</p>
+                                <p class="fw-bold">R$ 24,90</p>
+                                <button class="btn btn-success btn-adicionar" 
+                                        data-id="3" 
+                                        data-nome="Arroz Integral" 
+                                        data-preco="24.90">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4 produto" data-categoria="naopereciveis">
+                        <div class="card h-100" data-aos="fade-up">
+                            <img src="imagens/alimentos/feijao.png" class="card-img-top" alt="Pacote de feijão carioca">
+                            <div class="card-body">
+                                <h4 class="card-title">Feijão Carioca</h4>
+                                <p class="card-text">Feijão de alta qualidade - 1kg</p>
+                                <p class="fw-bold">R$ 8,50</p>
+                                <button class="btn btn-success btn-adicionar" 
+                                        data-id="4" 
+                                        data-nome="Feijão Carioca" 
+                                        data-preco="8.50">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Não Perecíveis -->
-        <section id="nao-pereciveis">
-            <h3>Produtos Não Perecíveis</h3>
-            <div>
-                <h4>Arroz Integral</h4>
-                <img src="imagens/alimentos/arroz.png" alt="Arroz integral" width="200">
-                <p>Arroz tipo 1 - 5kg</p>
-                <p>R$ 24,90</p>
+                    <!-- Bebidas -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4 produto" data-categoria="bebidas">
+                        <div class="card h-100" data-aos="fade-up">
+                            <img src="imagens/bebidas/pergola.jpg" class="card-img-top" alt="Vinho Pérgola">
+                            <div class="card-body">
+                                <h4 class="card-title">Vinho Pérgola</h4>
+                                <p class="card-text">Vinho Suave - 1L</p>
+                                <p class="fw-bold">R$ 31,90</p>
+                                <button class="btn btn-success btn-adicionar" 
+                                        data-id="7" 
+                                        data-nome="Vinho Pérgola" 
+                                        data-preco="31.90">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4 produto" data-categoria="bebidas">
+                        <div class="card h-100" data-aos="fade-up">
+                            <img src="imagens/bebidas/naturalone.jpg" class="card-img-top" alt="Natural One Laranja">
+                            <div class="card-body">
+                                <h4 class="card-title">Natural One Laranja</h4>
+                                <p class="card-text">Suco - 2L</p>
+                                <p class="fw-bold">R$ 25,90</p>
+                                <button class="btn btn-success btn-adicionar" 
+                                        data-id="8" 
+                                        data-nome="Natural One Laranja" 
+                                        data-preco="25.90">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Higiene e Limpeza -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4 produto" data-categoria="higiene">
+                        <div class="card h-100" data-aos="fade-up">
+                            <img src="imagens/higiene/sabonete.jpg" class="card-img-top" alt="Sabonete líquido">
+                            <div class="card-body">
+                                <h4 class="card-title">Sabonete Líquido</h4>
+                                <p class="card-text">Sabonete líquido 500ml</p>
+                                <p class="fw-bold">R$ 12,90</p>
+                                <button class="btn btn-success btn-adicionar" 
+                                        data-id="5" 
+                                        data-nome="Sabonete Líquido" 
+                                        data-preco="12.90">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4 produto" data-categoria="higiene">
+                        <div class="card h-100" data-aos="fade-up">
+                            <img src="imagens/higiene/amaciante.jpg" class="card-img-top" alt="Amaciante">
+                            <div class="card-body">
+                                <h4 class="card-title">Amaciante Comfort Brisa Elegante</h4>
+                                <p class="card-text">Amaciante Concentrado 1L</p>
+                                <p class="fw-bold">R$ 22,49</p>
+                                <button class="btn btn-success btn-adicionar" 
+                                        data-id="9" 
+                                        data-nome="Amaciante" 
+                                        data-preco="22.49">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4 produto" data-categoria="higiene">
+                        <div class="card h-100" data-aos="fade-up">
+                            <img src="imagens/higiene/detergente.jpg" class="card-img-top" alt="Detergente líquido">
+                            <div class="card-body">
+                                <h4 class="card-title">Detergente</h4>
+                                <p class="card-text">Detergente 500ml</p>
+                                <p class="fw-bold">R$ 3,50</p>
+                                <button class="btn btn-success btn-adicionar" 
+                                        data-id="6" 
+                                        data-nome="Detergente" 
+                                        data-preco="3.50">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h4>Feijão Carioca</h4>
-                <img src="imagens/alimentos/feijao.png" alt="Feijão carioca" width="200">
-                <p>Feijão de alta qualidade - 1kg</p>
-                <p>R$ 8,50</p>
-            </div>
-        </section>
-
-        <!-- Higiene e Limpeza -->
-        <section id="higiene">
-            <h3>Higiene e Limpeza</h3>
-            <div>
-                <h4>Sabonete Líquido</h4>
-                <img src="imagens/higiene/sabonete.jpg" alt="Sabonete líquido" width="200">
-                <p>Sabonete líquido 500ml</p>
-                <p>R$ 12,90</p>
-            </div>
-            <div>
-                <h4>Detergente</h4>
-                <img src="imagens/higiene/detergente.jpg" alt="Detergente" width="200">
-                <p>Detergente 500ml</p>
-                <p>R$ 3,50</p>
-            </div>
-        </section>
+        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 SuperMercado Web - Fase 1</p>
-        <p>Disciplina: Fundamentos de Sistemas Web</p>
+    <footer class="text-white py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center mb-3 mb-md-0">
+                    <img src="imagens/LogoSUPERRP.png" alt="SuperMercado RP" height="60">
+                </div>
+                <div class="col-md-8 text-center text-md-end">
+                    <p class="mb-1">© 2025 SuperRP - Todos os direitos reservados</p>
+                    <p class="mb-1">Contato: (16) 3333-4444 | contato@SuperRP.com.br</p>
+                    <p class="mb-0">Disciplina: Fundamentos de Sistemas Web - Fase 2</p>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link  href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>document.addEventListener('DOMContentLoaded',()=>AOS.init({duration:600,once:true}));</script>
+    <script src="js/main.js"></script>
+    <script src="js/carrinho.js"></script>
+    <script src="js/produtos.js"></script>
+    <script src="js/auth.js" defer></script>
 </body>
 </html>

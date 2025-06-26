@@ -1,0 +1,439 @@
+:root {
+    --cor-primaria: #1b5e20;
+    --cor-secundaria: #ffd600;
+    --cor-texto: #212121;
+    --cor-fundo: #f9f9f9;
+}
+
+/* =============== HEADER =============== */
+.navbar {
+    background-color: var(--cor-primaria) !important;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Logo no header */
+.navbar-brand img {
+    max-height: 40px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    padding: 0.5rem 0.8rem; /* Ajuste de espaçamento */
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+}
+
+.nav-link i {
+    font-size: 1.2rem;
+}
+
+/* Ícone de casa aumentado */
+.navbar .bi-house {
+    font-size: 1.5rem;
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+}
+
+/* Dropdown de login */
+.navbar .dropdown-menu {
+    min-width: 200px;
+}
+
+/* =============== FOOTER =============== */
+footer {
+    background-color: var(--cor-primaria) !important;
+    color: var(--cor-secundaria);
+}
+
+footer .row {
+    align-items: center;
+}
+
+footer img {
+    margin-bottom: 5px; /* Ajuste para aproximar da disciplina */
+}
+
+/* =============== GERAL =============== */
+body {
+    padding-top: 56px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.btn-success {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+.btn-success:hover {
+    background-color: #1b5e20;
+    border-color: #1b5e20;
+}
+
+/* Carrossel */
+.carousel-item img {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Modo Alto Contraste */
+.alto-contraste {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.alto-contraste .card,
+.alto-contraste .navbar,
+.alto-contraste footer {
+    background-color: #000000 !important;
+    color: #fff !important;
+    border-color: #ff0 !important;
+}
+
+.alto-contraste a,
+.alto-contraste .btn {
+    color: #ff0 !important;
+    border-color: #ff0 !important;
+}
+
+
+/* Botão de Contraste */
+#btn-contraste {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #000 !important;    
+    border-color:     #000 !important;
+    color:            #ffd600 !important;
+}
+
+.btn-contraste:hover{
+  background-color: #222 !important;    
+}
+/* Formulários */
+.form-label {
+    font-weight: 500;
+}
+
+/* Estilos para a página de produtos */
+#produtos-container {
+    transition: all 0.3s ease;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.produto {
+    transition: transform 0.3s, opacity 0.3s;
+    padding: 10px;
+    flex: 0 0 auto;
+}
+
+/* Ajustes para os cards menores */
+.produto .card {
+    transform: scale(0.85);
+    transform-origin: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.produto .card:hover {
+    transform: scale(0.9);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.produto .card-img-top {
+    height: 120px;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.produto .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.produto .card-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.produto .card-text {
+    font-size: 0.85rem;
+    flex-grow: 1;
+}
+
+.produto .fw-bold {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.produto .btn {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+    margin-top: auto;
+}
+
+/* Botões de filtro ativos */
+.list-group-item.active {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+.list-group-item {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.list-group-item:hover {
+    background-color: #e9ecef;
+}
+
+/* Filtros de categoria */
+.filter-card {
+    position: sticky;
+    top: 100px;
+    z-index: 10;
+}
+
+/* Responsividade para o menu de filtro */
+@media (max-width: 992px) {
+    .produto .card {
+        transform: scale(0.9);
+    }
+    
+    .produto .card:hover {
+        transform: scale(0.95);
+    }
+    
+    /* Dropdown em telas menores */
+    .navbar .dropdown-menu {
+        position: static;
+        float: none;
+        width: auto;
+        margin-top: 0;
+        border: none;
+        box-shadow: none;
+    }
+    
+    .navbar .dropdown-item {
+        padding-left: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .produto {
+        flex: 0 0 50%;
+    }
+    
+    .produto .card {
+        transform: scale(1);
+    }
+    
+    .produto .card:hover {
+        transform: scale(1.05);
+    }
+    
+    .filter-card {
+        position: static;
+        margin-bottom: 20px;
+    }
+    
+    /* Footer em telas menores */
+    footer .col-md-4, 
+    footer .col-md-8 {
+        text-align: center !important;
+    }
+    
+    footer .col-md-4 {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .produto {
+        flex: 0 0 100%;
+    }
+    
+    .produto .card {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+}
+
+/* Responsividade geral */
+@media (max-width: 768px) {
+    .navbar-nav {
+        margin-top: 10px;
+    }
+    
+    .carousel-caption {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Efeito de transição para filtros */
+.produto {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== ESTILOS PARA O CARRINHO ========== */
+/* Estilos para imagens no carrinho */
+.carrinho-imagem {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+    background-color: white;
+}
+
+.carrinho-imagem-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    border: 1px dashed #dee2e6;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrinho-imagem-placeholder::before {
+    content: "🛒";
+    font-size: 1.5rem;
+    color: #6c757d;
+}
+
+/* Ajuste de layout para telas menores */
+@media (max-width: 768px) {
+    .carrinho-imagem,
+    .carrinho-imagem-placeholder {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .d-flex.align-items-center {
+        flex-wrap: wrap;
+    }
+}
+
+/* Melhorias visuais para o formulário */
+#form-cadastro .form-control, 
+#form-cadastro .form-select {
+    border-radius: 8px;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    transition: all 0.3s;
+}
+
+#form-cadastro .form-control:focus, 
+#form-cadastro .form-select:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 0.25rem rgba(46, 125, 50, 0.25);
+}
+
+#form-cadastro .form-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+#form-cadastro .btn-success {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+#form-cadastro .btn-success:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Validação */
+#form-cadastro .is-invalid {
+    border-color: #dc3545 !important;
+}
+
+#form-cadastro .invalid-feedback {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+/* Títulos */
+#form-cadastro h4 {
+    color: var(--cor-primaria);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--cor-primaria);
+}
+
+:focus-visible {
+  outline: 2px solid #004aad;      /* cor acessível */
+  outline-offset: 2px;
+}
+
+/* Botões / links dentro do modo alto-contraste ficam amarelos */
+.alto-contraste :focus-visible {
+  outline: 2px dashed #ffff00;
+}
+
+.skeleton{
+  background:linear-gradient(90deg,var(--cor-neutra-clara) 25%,#eeeeee 37%,var(--cor-neutra-clara) 63%);
+  background-size:400% 100%;
+  animation:shimmer 1.2s infinite;
+  border-radius:4px;
+}
+@keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+
+.navbar.shadow{
+  box-shadow:0 2px 6px rgba(0,0,0,.25);
+  transition:box-shadow .3s ease;
+}

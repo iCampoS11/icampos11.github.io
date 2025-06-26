@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SuperRP - Home</title>
+    <title>SuperRP - Pagamento</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        .progress-bar {
+            transition: width 30s linear;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Modificado -->
     <header class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
-        <div class="container">
+                <div class="container">
             <!-- Logo no lugar do texto -->
             <a class="navbar-brand" href="index.html">
                 <img src="imagens/LogoRP.png" alt="SuperRP" height="40">
@@ -63,61 +67,24 @@
         </div>
     </header>
 
-    <main class="container mt-5">
-        <section id="promocoes" class="my-4">
-            <h2 class="text-center mb-4">Promoções da Semana!</h2>
-            
-            <!-- Carrossel de Promoções -->
-            <div id="carouselPromo" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselPromo" data-bs-slide-to="0" class="active"></button>
-                    <button type="button" data-bs-target="#carouselPromo" data-bs-slide-to="1"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="imagens/promocoes/frutas.png" class="d-block w-100" alt="Oferta de frutas: 3kg por R$ 15,90">
-                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50">
-                            <h3>Oferta Especial de Frutas</h3>
-                            <p>Leve 3kg de frutas selecionadas por apenas R$ 15,90</p>
-                            <p>Válido até 30/06/2025</p>
+    <main class="container mt-5 pt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="text-center mb-4">Resumo da Compra</h2>
+                        
+                        <div id="status-compra">
+                            <!-- Conteúdo dinâmico será inserido aqui -->
                         </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="imagens/promocoes/limpeza.png" class="d-block w-100" alt="Kit limpeza: Sabão, Detergente e Amaciante por R$ 24,90">
-                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50">
-                            <h3>Kit Limpeza</h3>
-                            <p>Sabão + Detergente + Amaciante por R$ 24,90</p>
-                            <p>Economize R$ 5,00</p>
+                        
+                        <div class="mt-4">
+                            <a href="index.html" class="btn btn-success">Voltar à Página Inicial</a>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselPromo" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselPromo" data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </button>
             </div>
-        </section>
-        <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('compra') === 'sucesso') {
-            const alertDiv = document.createElement('div');
-            alertDiv.className = 'alert alert-success alert-dismissible fade show';
-            alertDiv.innerHTML = `
-                <i class="bi bi-check-circle"></i> 
-                <strong>Compra concluída com sucesso!</strong> 
-                Obrigado por comprar conosco.
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            `;
-            
-            const promocoesSection = document.getElementById('promocoes');
-            promocoesSection.parentNode.insertBefore(alertDiv, promocoesSection);
-        }
-    });
-        </script>
-
+        </div>
     </main>
 
     <footer class="text-white py-3">
@@ -136,10 +103,51 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link  href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>document.addEventListener('DOMContentLoaded',()=>AOS.init({duration:600,once:true}));</script>
-    <script src="js/main.js" defer></script>
-    <script src="js/auth.js" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const statusDiv = document.getElementById('status-compra');
+        const formaPagamento = localStorage.getItem('formaPagamento');
+        const pedido = JSON.parse(localStorage.getItem('ultimoPedido'));
+        
+        if (formaPagamento === 'pix') {
+            statusDiv.innerHTML = `
+                <div class="alert alert-info">
+                    <h4><i class="bi bi-qr-code"></i> Pagamento via PIX</h4>
+                    <p>Escaneie o QR Code abaixo para realizar o pagamento</p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PIX-${pedido.id}" 
+                         alt="QR Code PIX" class="img-fluid my-3">
+                    <p>Você tem até <strong>60 minutos</strong> para realizar o pagamento.</p>
+                    <div class="d-grid mt-4">
+                        <a href="pedidos.html" class="btn btn-outline-success">
+                            <i class="bi bi-list"></i> Ver Meus Pedidos
+                        </a>
+                    </div>
+                </div>
+                <p class="text-muted">Aguardando confirmação do pagamento...</p>
+            `;
+            
+            setTimeout(() => {
+                window.location.href = "index.html?compra=sucesso";
+            }, 30000);
+        } else {
+            statusDiv.innerHTML = `
+                <div class="alert alert-warning">
+                    <h4><i class="bi bi-credit-card"></i> Pagamento via Cartão</h4>
+                    <p>Estamos processando seu pagamento...</p>
+                    <div class="d-grid mt-4">
+                        <a href="pedidos.html" class="btn btn-outline-success">
+                            <i class="bi bi-list"></i> Ver Meus Pedidos
+                        </a>
+                    </div>
+                </div>
+                <p class="text-muted">Aguardando confirmação...</p>
+            `;
+            
+            setTimeout(() => {
+                window.location.href = "index.html?compra=sucesso";
+            }, 30000);
+        }
+    });
+</script>
 </body>
 </html>
